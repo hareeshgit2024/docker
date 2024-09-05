@@ -13,7 +13,7 @@ Virtual Machines (VMs) virtualize entire hardware systems, running a full operat
 
 <details>
 .
-<summary>**Hyper-V in Windows**</summary>
+<summary>Hyper-V in Windows</summary>
 
 `Why do we use Hyper-V in Windows?`
 
@@ -42,9 +42,7 @@ Before Docker Desktop integrated with Hyper-V, tools like VirtualBox were used f
 
 <details>
 .
-<summary>
-**Is WSL2 a replacement for Hyper-V in Docker**
-</summary>
+<summary>Is WSL2 a replacement for Hyper-V in Docker</summary>
 
 `Why do we use WSL2 instead of Hyper-V.?`
 
@@ -53,23 +51,23 @@ WSL2 (Windows Subsystem for Linux 2) is used to run Docker on Windows for severa
 - Native Linux Kernel
 WSL2 runs a `full Linux kernel on Windows`, allowing Docker to run Linux containers natively without emulation or additional virtual machines. This provides several advantages:
 
-* Full Linux Kernel Support: WSL2 includes a real Linux kernel that supports all the necessary Linux kernel features (such as namespaces, cgroups, etc.) that Docker requires to manage containers effectively.
-* Better Performance: Since WSL2 uses the native Linux kernel, there’s no need for heavy virtualization as in Hyper-V. This improves container performance and reduces overhead.
+Full Linux Kernel Support: WSL2 includes a real Linux kernel that supports all the necessary Linux kernel features (such as namespaces, cgroups, etc.) that Docker requires to manage containers effectively.
+Better Performance: Since WSL2 uses the native Linux kernel, there’s no need for heavy virtualization as in Hyper-V. This improves container performance and reduces overhead.
 
 - Improved Performance Compared to Hyper-V :WSL2 offers better file system performance and faster startup times compared to traditional Hyper-V virtual machines.
-* Fast I/O: File system interactions (like reading and writing files) are significantly faster in WSL2 than in Docker's Hyper-V-based backend.
-* Low Resource Overhead: WSL2 is more lightweight than running a full virtual machine through Hyper-V, meaning it consumes fewer system resources (CPU, RAM).
+Fast I/O: File system interactions (like reading and writing files) are significantly faster in WSL2 than in Docker's Hyper-V-based backend.
+Low Resource Overhead: WSL2 is more lightweight than running a full virtual machine through Hyper-V, meaning it consumes fewer system resources (CPU, RAM).
 
 - Native Windows-Linux Interoperability
 WSL2 allows Windows and Linux applications to interact more easily.
 
-* Shared Filesystem: WSL2 allows easy access to Windows file systems, enabling seamless sharing of files and directories between Windows and Docker containers.
-* Networking Integration: WSL2 integrates well with Windows networking, enabling Docker containers to use the same network stack as Windows applications.
+Shared Filesystem: WSL2 allows easy access to Windows file systems, enabling seamless sharing of files and directories between Windows and Docker containers.
+Networking Integration: WSL2 integrates well with Windows networking, enabling Docker containers to use the same network stack as Windows applications.
 
 - No Need for Hyper-V
 Using WSL2 allows Docker to work without enabling Hyper-V, which can conflict with other virtualization solutions (such as VirtualBox or VMware).
 
-* Hyper-V Alternative: Some developers prefer to avoid using Hyper-V because it disables other virtualization technologies. WSL2 provides an alternative way to run Docker without requiring Hyper-V, allowing more flexibility in virtualization choices.
+Hyper-V Alternative: Some developers prefer to avoid using Hyper-V because it disables other virtualization technologies. WSL2 provides an alternative way to run Docker without requiring Hyper-V, allowing more flexibility in virtualization choices.
 </details>
 
 
