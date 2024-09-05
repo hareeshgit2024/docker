@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/dbb0a6f2-68af-4965-9f03-c8d503a702f8)
+
 **INTRODUCTION**
 
 Docker is an open source platform that enables developers to package applications and their dependencies into portable containers, ensuring consistency across different environments. This helps the developer to make sure whatever features tested in development phase and signedoff will work exactly as expected in the production environments. It simplifies deployment, scaling, and management of applications. On How part, we will definitely cover in the below.
@@ -7,10 +9,11 @@ Docker is an open source platform that enables developers to package application
 Virtual Machines works as a virtual computer system with its own CPU, memory, interface network and storage created on a physical system hosted on premise or remote. Software called hypervisor separates the machine from the underlying hardware. VM's have applications, associated libraries and a guest operating system which makes it heavy. Each VM's are isolated from each other.
 On the other side, Docker engines sit in between the host OS and applications. Here there is no guest OS and applications can directly talk with host OS. As there is no guest OS bundled, it is light weight.
 
-![image](https://github.com/user-attachments/assets/d502281b-c612-4104-a78c-7f7a362676e1)
+![image](https://github.com/user-attachments/assets/3c99d3cd-44bd-4da7-9b16-228b5b41eab6)
 
 Virtual Machines (VMs) virtualize entire hardware systems, running a full operating system with dedicated resources, which can be resource intensive. Docker containers, on the other hand, share the host OS kernel, making them more lightweight and efficient. VMs offer strong isolation at the cost of overhead, while Docker containers are faster to start and consume fewer resources. VMs are ideal for running different OS environments, whereas Docker excels in microservices and rapid deployment scenarios.
 
+---
 <details>
 .
 <summary>Hyper-V in Windows</summary>
@@ -39,6 +42,8 @@ Cross-Platform Support: Docker Desktop can switch between Linux and Windows cont
 - Eliminates Need for Additional Software
 Before Docker Desktop integrated with Hyper-V, tools like VirtualBox were used for virtualization. Docker Desktop's reliance on Hyper-V eliminates the need for third-party virtualization tools, simplifying the setup.
 </details>
+
+---
 
 <details>
 .
@@ -70,6 +75,7 @@ Using WSL2 allows Docker to work without enabling Hyper-V, which can conflict wi
 Hyper-V Alternative: Some developers prefer to avoid using Hyper-V because it disables other virtualization technologies. WSL2 provides an alternative way to run Docker without requiring Hyper-V, allowing more flexibility in virtualization choices.
 </details>
 
+---
 
 <details>
 .
@@ -84,10 +90,13 @@ In software development, Docker containers are like these portable coffee carts.
 This is different from setting up a full coffee shop (like a virtual machine), which requires more time, resources, and space. Containers are lightweight, quick to start, and can be easily moved or replicated, much like a portable cart. This portability and consistency make Docker a powerful tool for developers, ensuring their applications work seamlessly across different environments.
 </details>
 
+---
+
 **Docker Architecture - an overview** 
 
 Docker's architecture is based on a client-server model, where the Docker client communicates with the Docker daemon [dockerd], which builds, runs, and manages containers. Containers are created from images, which are lightweight, standalone, and executable software packages. Docker uses a _layered filesystem_, where images are composed of layers that represent different stages of the application's build process. Docker Hub or private registries store and distribute these images. The architecture allows for efficient, scalable, and portable deployment of applications across different environments.
-![image](https://github.com/user-attachments/assets/a2841777-6b82-4767-8656-86d60b190bd6)
+
+![image](https://github.com/user-attachments/assets/e4489c69-4593-4de4-b76f-f5af99e35d15)
 
 Docker Engine is an open source containerization technology for building and containerizing your applications. Docker Engine acts as a client-server application with:
 
@@ -95,6 +104,7 @@ Docker Engine is an open source containerization technology for building and con
 - APIs which specify interfaces that programs can use to talk to and instruct the Docker daemon.
 - A command line interface (CLI) client docker.
 
+---
 <details>
 .
 <summary>Docker Image, Container, Registry, Engine - real life example</summary>
@@ -109,6 +119,8 @@ Docker Engine: This is the kitchen in your food truck. It's the engine that take
 
 Docker Registry: This is your recipe book or storage cabinet. It stores all your images (recipes) so you can pull them out and use them whenever you need to prepare a dish. Public registries (like Docker Hub) are like community cookbooks, where everyone can share and access recipes.
 </details>
+
+---
 
 **Docker Installation**
 
@@ -265,6 +277,9 @@ COPY --from=builder /app/target/myapp.jar /app/myapp.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "myapp.jar"]
 ```
+
+---
+
 <details>
   .
 <summary>How multi stage works</summary>
@@ -285,6 +300,8 @@ COPY --from=builder /app/target/myapp.jar /app/myapp.jar: Copies the built JAR f
 EXPOSE 8080: Exposes the application port.
 ENTRYPOINT ["java", "-jar", "myapp.jar"]: Defines the command to run the application.
 </details>
+
+---
 
 As we got a high level overview of Docker, Image, Container lets gets some handon.
 
@@ -323,9 +340,11 @@ A tmpfs mount isn't persisted on disk, either on the Docker host or within a con
 
 Named pipes can be used for communication between the Docker host and a container. Common use case is to run a third-party tool inside of a container and connect to the Docker Engine API using a named pipe.
 
+---
+
 <details>
   <summary>Volumes, Bind mounts, tmpfs, Named pipes - real life example</summary>
-.
+
 Think of running a bakery where you need to store ingredients, tools, and temporary items:
 
 Docker Volumes: These are like dedicated storage rooms in your bakery. You keep your essential ingredients (data) here—flour, sugar, etc. (database files, logs). The volume is separate from your kitchen (container) but always accessible, ensuring that even if you remodel your kitchen (rebuild the container), your ingredients (data) are safe and available.
@@ -336,6 +355,8 @@ tmpfs: This is like a temporary counter space in your bakery. You use it to quic
 
 Named Pipe: This is like a communication tube between two chefs in different parts of the bakery. It allows them to pass notes (data) back and forth quickly and directly without using the main kitchen pathways (filesystem). It's useful for sending messages (inter-process communication) between different areas (containers).
 </details>
+
+---
 
 **Docker Volume Advanced Concepts**
 
